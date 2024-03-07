@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { motion } from 'framer-motion';
 
 import { ChallengesContext } from '../store/challenges-context.jsx';
 
@@ -27,7 +28,8 @@ const ChallengeItem = ({
   }
 
   return (
-    <li>
+    // animate layout by movement when previous element was deleted
+    <motion.li layout>
       <article className="challenge-item">
         <header>
           <img {...challenge.image} />
@@ -59,7 +61,7 @@ const ChallengeItem = ({
           )}
         </div>
       </article>
-    </li>
+    </motion.li>
   );
 }
 
