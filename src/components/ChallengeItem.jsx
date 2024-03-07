@@ -2,11 +2,11 @@ import { useContext } from 'react';
 
 import { ChallengesContext } from '../store/challenges-context.jsx';
 
-export default function ChallengeItem({
+const ChallengeItem = ({
   challenge,
   onViewDetails,
   isExpanded,
-}) {
+}) => {
   const { updateChallengeStatus } = useContext(ChallengesContext);
 
   const formattedDate = new Date(challenge.deadline).toLocaleDateString(
@@ -18,11 +18,11 @@ export default function ChallengeItem({
     }
   );
 
-  function handleCancel() {
+  const handleCancel = () => {
     updateChallengeStatus(challenge.id, 'failed');
   }
 
-  function handleComplete() {
+  const handleComplete = () => {
     updateChallengeStatus(challenge.id, 'completed');
   }
 
@@ -42,10 +42,10 @@ export default function ChallengeItem({
             </p>
           </div>
         </header>
-        <div className="challenge-item-details">
+        <div className={`challenge-item-details ${isExpanded ? 'expanded' : ''}`}>
           <p>
             <button onClick={onViewDetails}>
-              View Details{' '}
+              View Details
               <span className="challenge-item-details-icon">&#9650;</span>
             </button>
           </p>
@@ -62,3 +62,5 @@ export default function ChallengeItem({
     </li>
   );
 }
+
+export default ChallengeItem;
