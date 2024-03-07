@@ -29,7 +29,7 @@ const ChallengeItem = ({
 
   return (
     // animate layout by movement when previous element was deleted
-    <motion.li layout>
+    <motion.li layout exit={{ y: -30, opacity: 0 }}>
       <article className="challenge-item">
         <header>
           <img {...challenge.image} />
